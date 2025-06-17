@@ -12,6 +12,11 @@ $jobs = db_query("SELECT * FROM jobs WHERE user_id = ?", [$userId])->fetchAll(PD
 ?>
 
 <div class="container">
+<?php if (isset($_GET['updated'])): ?>
+  <div class="alert alert-success">
+    ✅ Cập nhật việc làm thành công!
+  </div>
+<?php endif; ?>
   <h2>Các công việc bạn đã đăng</h2>
   <table class="table table-bordered">
     <thead>

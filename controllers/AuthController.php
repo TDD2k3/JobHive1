@@ -7,6 +7,7 @@ class AuthController {
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
 
+            //phần này lấy user từ db
             $user = db_query("SELECT * FROM users WHERE email = ?", [$email])->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
@@ -14,7 +15,8 @@ class AuthController {
                     'id' => $user['id'],
                     'email' => $user['email'],
                     'role' => $user['role'],
-                    'name' => $user['name']
+                    'name' => $user['name'],
+                    'company_id' => $user['company_id'],
                 ];
                 header("Location: index.php");
                 exit;
